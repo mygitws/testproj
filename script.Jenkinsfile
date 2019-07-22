@@ -2,7 +2,7 @@ node {
     stage('Build') {
         echo 'Building..'
 
-        sh 'mkdir build'
+        //sh 'mkdir build'
         
         dir ("build") {
             deleteDir()
