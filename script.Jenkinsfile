@@ -1,50 +1,37 @@
-pipeline {
-    agent any
+node {
+    stage('Build') {
+        echo 'Building..'
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                
-                sh 'rm package.zip'
+        sh 'rm package.zip'
 
-                script {
-                    zip zipFile:"package.zip", archive:false, glob:"**/*"
-                }
+        zip zipFile:"package.zip", archive:false, glob:"**/*"
 
-                stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
-            }
-        }
+        stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
+    }
         
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                
-                //deleteDir()
-                
-                sh 'ls'
-                
-                unstash "myartifacts"
-                
-                sh '''
-                    ls
-                    cat readme
-                    cat notes
-                '''
-                
-                sh 'chmod +x sayHello'
-                sh './sayHello "Git"'
-            
-                cleanWs
-            }
-        }
-        
+    stage('Test') {
+        echo 'Testing..'
+    }
+
+    stage('Deploy') {
+        echo 'Deploying....'
+
+        //deleteDir()
+
+        sh 'ls'
+
+        unstash "myartifacts"
+
+        sh '''
+            ls
+            cat readme
+            cat notes
+        '''
+
+        sh 'chmod +x sayHello'
+        sh './sayHello "Git"'
+
+        cleanWs
     }
 }
 
