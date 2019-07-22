@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh ./sayHello
+                sh ./sayHello "Git"
             }
         }
         stage('Test') {
