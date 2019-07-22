@@ -5,8 +5,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'chmod +x sayHello'
-                sh './sayHello "Git"'
+                
+                sh 'mkdir -p build/release'
+                dir("build/prod/release") {
+                    zip zipFile:"package.zip", archive:false, glob:"**/*"
+                }
+                stash name: "myartifacts", includes: "build/prod/**/*.zip", useDefaultExcludes:true
             }
         }
         stage('Test') {
@@ -17,6 +21,15 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                unstash "myartifacts"
+                
+                sh '''
+                    cat build/prod/release/readme
+                    cat build/prod/release/notes
+                '''
+                
+                sh 'chmod +x sayHello'
+                sh './sayHello "Git"'
             }
         }
     }
