@@ -5,6 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                
+                sh 'rm package.zip'
 
                 script {
                     zip zipFile:"package.zip", archive:false, glob:"**/*"
