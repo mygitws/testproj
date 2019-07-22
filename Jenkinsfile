@@ -8,7 +8,9 @@ pipeline {
                 
                 sh 'mkdir -p build/release'
                 dir("build/prod/release") {
-                    zip zipFile:"package.zip", archive:false, glob:"**/*"
+                    script {
+                        zip zipFile:"package.zip", archive:false, glob:"**/*"
+                    }
                 }
                 stash name: "myartifacts", includes: "build/prod/**/*.zip", useDefaultExcludes:true
             }
