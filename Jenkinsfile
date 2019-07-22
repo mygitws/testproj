@@ -43,7 +43,7 @@ pipeline {
             
                 script
                 {
-                    cleanWs
+                    cleanWs notFailBuild: true
                 }
             }
         }
