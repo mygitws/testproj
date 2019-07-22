@@ -2,8 +2,9 @@ node {
     stage('Build') {
         echo 'Building..'
 
-        sh 'rm package.zip'
-
+        //sh 'rm package.zip'
+        deleteDir()
+        
         zip zipFile:"package.zip", archive:false, glob:"**/*"
 
         stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
@@ -15,8 +16,6 @@ node {
 
     stage('Deploy') {
         echo 'Deploying....'
-
-        //deleteDir()
 
         sh 'ls'
 
