@@ -1,4 +1,6 @@
 node {
+    git url: 'https://github.com/mygitws/testproj.git'
+    
     stage('Build') {
         echo 'Building..'
 
