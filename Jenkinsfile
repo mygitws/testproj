@@ -5,11 +5,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                
-                sh 'mkdir -p build/prod/release'
+
                 script {
                     zip zipFile:"package.zip", archive:false, glob:"**/*"
                 }
+                
+                dir("build/prod/release") {
+                    deleteDir()
+                }
+                sh 'mkdir -p build/prod/release'
                 sh 'cp package.zip build/prod/release'
                 stash name: "myartifacts", includes: "build/prod/**/*.zip", useDefaultExcludes:true
             }
