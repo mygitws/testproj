@@ -9,10 +9,8 @@ pipeline {
                 script {
                     zip zipFile:"package.zip", archive:false, glob:"**/*"
                 }
-                
-                sh 'mkdir -p build/prod/release'
-                sh 'cp package.zip build/prod/release'
-                stash name: "myartifacts", includes: "build/prod/**/*.zip", useDefaultExcludes:true
+
+                stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
             }
         }
         stage('Test') {
@@ -24,15 +22,16 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 
-                deleteDir()
+                //deleteDir()
+                
+                sh 'ls'
                 
                 unstash "myartifacts"
                 
                 sh '''
                     ls
-                    ls build/prod/release/readme
-                    cat build/prod/release/readme
-                    cat build/prod/release/notes
+                    cat readme
+                    cat notes
                 '''
                 
                 sh 'chmod +x sayHello'
