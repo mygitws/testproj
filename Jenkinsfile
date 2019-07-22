@@ -41,7 +41,10 @@ pipeline {
                 sh 'chmod +x sayHello'
                 sh './sayHello "Git"'
             
-                cleanWs
+                script
+                {
+                    cleanWs
+                }
             }
         }
         
