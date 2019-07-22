@@ -41,10 +41,10 @@ pipeline {
                 sh 'chmod +x sayHello'
                 sh './sayHello "Git"'
             
-                //script
-                //{
+                script
+                {
                     cleanWs notFailBuild: true
-                //}
+                }
             }
         }
         
