@@ -2,12 +2,14 @@ node {
     stage('Build') {
         echo 'Building..'
 
-        //sh 'rm package.zip'
-        deleteDir()
+        sh 'mkdir build'
         
-        zip zipFile:"package.zip", archive:false, glob:"**/*"
+        dir ("build") {
+            deleteDir()
+            zip zipFile:"package.zip", archive:false, glob:"../**/*"
+        }
 
-        stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
+        stash name: "myartifacts", includes: "build/**/*.zip", useDefaultExcludes:true
     }
         
     stage('Test') {
@@ -23,8 +25,8 @@ node {
 
         sh '''
             ls
-            cat readme
-            cat notes
+            cat build/readme
+            cat build/notes
         '''
 
         sh 'chmod +x sayHello'
