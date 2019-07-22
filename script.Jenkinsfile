@@ -31,7 +31,7 @@ node {
         sh 'chmod +x sayHello'
         sh './sayHello "Git"'
 
-        cleanWs
+        cleanWs notFailBuild: true
     }
 }
 
