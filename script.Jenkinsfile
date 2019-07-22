@@ -2,11 +2,12 @@ node {
     stage('Build') {
         echo 'Building..'
 
-        //sh 'mkdir build'
-        
+        sh '''
+        rm -f build
+        mkdir build
+        cp readme notes build
         dir ("build") {
-            deleteDir()
-            zip zipFile:"package.zip", archive:false, glob:"../**/*"
+            zip zipFile:"package.zip", archive:false, glob:"**/*"
         }
 
         stash name: "myartifacts", includes: "build/**/*.zip", useDefaultExcludes:true
