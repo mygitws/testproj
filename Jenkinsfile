@@ -13,6 +13,7 @@ pipeline {
                 stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
             }
         }
+        /*
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -38,5 +39,6 @@ pipeline {
                 sh './sayHello "Git"'
             }
         }
+        */
     }
 }
