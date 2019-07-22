@@ -3,6 +3,7 @@ node {
         echo 'Building..'
 
         sh '''
+        tree
         rm -rf build
         mkdir build
         cp readme notes build
