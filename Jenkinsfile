@@ -25,6 +25,8 @@ pipeline {
                 unstash "myartifacts"
                 
                 sh '''
+                    ls
+                    ls build/prod/release/readme
                     cat build/prod/release/readme
                     cat build/prod/release/notes
                 '''
