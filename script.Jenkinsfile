@@ -1,8 +1,9 @@
 node {
     git url: 'https://github.com/mygitws/testproj.git'
     
+    /*
     stage('Build') {
-        echo 'Building..'
+        echo 'Building...'
 
         sh '''
         tree
@@ -16,11 +17,12 @@ node {
 
         stash name: "myartifacts", includes: "build/**/*.zip", useDefaultExcludes:true
     }
+    */
         
     stage('Test') {
         echo 'Testing..'
     }
-
+/*
     stage('Deploy') {
         echo 'Deploying....'
 
@@ -39,5 +41,6 @@ node {
 
         cleanWs notFailBuild: true
     }
+    */
 }
 
