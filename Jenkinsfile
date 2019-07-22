@@ -6,12 +6,11 @@ pipeline {
             steps {
                 echo 'Building..'
                 
-                sh 'mkdir -p build/release'
-                dir("build/prod/release") {
-                    script {
-                        zip zipFile:"package.zip", archive:false, glob:"**/*"
-                    }
+                sh 'mkdir -p build/prod/release'
+                script {
+                    zip zipFile:"package.zip", archive:false, glob:"**/*"
                 }
+                sh 'cp package.zip build/prod/release'
                 stash name: "myartifacts", includes: "build/prod/**/*.zip", useDefaultExcludes:true
             }
         }
