@@ -9,6 +9,7 @@ node {
         dir ("build") {
             zip zipFile:"package.zip", archive:false, glob:"**/*"
         }
+        '''
 
         stash name: "myartifacts", includes: "build/**/*.zip", useDefaultExcludes:true
     }
