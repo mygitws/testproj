@@ -12,7 +12,7 @@ node {
         mkdir build
         cp readme notes build
         dir ("build") {
-            zip zipFile:"package.zip", archive:false, glob:"**/*"
+            zip zipFile:'package.zip', archive:false, glob:'**/*'
         }
         '''
 
