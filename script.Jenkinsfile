@@ -7,13 +7,14 @@ node {
         echo 'Building...'
 
         sh '''
+        zip zipFile:"package.zip"
         tree
         rm -rf build
         mkdir build
         cp readme notes build
        
         //dir ("build") {
-            zip zipFile:"package.zip"
+            //zip zipFile:"package.zip"
         //}
         cp package.zip build
         '''
