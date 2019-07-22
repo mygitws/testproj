@@ -15,12 +15,13 @@ pipeline {
                 stash name: "myartifacts", includes: "**/*.zip", useDefaultExcludes:true
             }
         }
-        /*
+        
         stage('Test') {
             steps {
                 echo 'Testing..'
             }
         }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
@@ -41,6 +42,6 @@ pipeline {
                 sh './sayHello "Git"'
             }
         }
-        */
+        
     }
 }
