@@ -26,8 +26,8 @@ node {
         stash name: "myartifacts-stash", includes: "build/**/*", useDefaultExcludes:true
     }
 
-    stage('Deploy') {
-        echo 'Deploying....'
+    stage('Package') {
+        echo 'Packaging....'
 
         sh 'ls'
         deleteDir()
@@ -52,7 +52,7 @@ node {
     }
     
     stage('Check artifacts') {
-        echo 'Checking artifacts...'
+        echo 'Checking artifacts and packages...'
         
         deleteDir()
         sh 'tree'
