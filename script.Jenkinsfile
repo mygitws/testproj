@@ -8,17 +8,18 @@ node {
 
         sh '''
         tree
-        rm -rf build
+        rm -rf build tmp
         mkdir build
-        cp readme notes build
+        mkdir tmp
+        cp readme notes tmp
         '''
         
         dir ("build")
         {
-            zip zipFile:"package.zip"
+            zip zipFile:"package.zip" archive:true glob:"tmp/*"
         }
         
-        stash name: "myartifacts", includes: "build/**/*", useDefaultExcludes:true
+        stash name: "myartifacts", includes: "build/**", useDefaultExcludes:truel
     }
 
         
@@ -31,11 +32,14 @@ node {
 
         sh 'ls build'
         unstash "myartifacts"
+        mkdir dest
+        unzip zipfFile:"build/package.zip" dir:"dest"
         sh 'ls build'
+        sh 'ls dest'
 
         sh '''
-            cat build/readme
-            cat build/notes
+            cat dest/readme
+            cat dest/notes
         '''
 
         sh 'chmod +x sayHello'
