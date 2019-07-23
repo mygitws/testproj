@@ -22,7 +22,10 @@ node {
         zip zipFile:"package.zip", archive:true, dir:"..", glob:"tmp/*"
         sh 'mv package.zip build/zip'
         sh 'mv tmp/readme build'
-
+        
+        dir("tmp") {
+            stash name: "mynotes-stash", includes: "notes"
+        }
         stash name: "myartifacts-stash", includes: "build/**/*", useDefaultExcludes:true
     }
 
@@ -57,6 +60,7 @@ node {
         deleteDir()
         sh 'tree'
         
+        unstash "mynotes-stash"
         unstash "myartifacts-stash"
         unstash "cpiopackage-stash"
         
