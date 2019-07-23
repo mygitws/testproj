@@ -40,7 +40,7 @@ node {
         
         sh 'cp build/package.zip .'
         //unzip zipfFile:"build/package.zip", dir:"dest"
-        unzip zipfFile:"package.zip"
+        unzip dir:'dest', zipfFile:'package.zip', glob:''
         sh 'ls build'
         sh 'ls dest'
 
