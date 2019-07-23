@@ -32,10 +32,9 @@ node {
 
         sh 'ls'
         unstash "myartifacts"
-        mkdir dest
+        sh 'mkdir dest'
         
-        unzip zipfFile:"build/package.zip"
-        mv build/package.zip dest
+        unzip zipfFile:"build/package.zip" dir:"dest"
         sh 'ls build'
         sh 'ls dest'
 
