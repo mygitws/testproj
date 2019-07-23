@@ -28,10 +28,9 @@ node {
         }
         
         sh '''
-        cd tmp
-        unzip -l package.zip
-        mv tmp/package.zip build/zip
-        mv tmp/readme build
+        unzip -l tmp/package.zip
+        cp tmp/package.zip build/zip
+        cp tmp/readme build
         '''
         
         dir("tmp") {
