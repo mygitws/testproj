@@ -13,7 +13,7 @@ node {
 
         sh '''
         tree
-        rm -rf build tmp
+        rm -rf build tmp package.zip
         mkdir -p build/zip
         mkdir tmp
         cp readme notes tmp
