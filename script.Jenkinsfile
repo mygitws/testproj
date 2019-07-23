@@ -35,8 +35,8 @@ node {
         sh 'ls'
         deleteDir()
         unstash "myartifacts"
-        //sh 'rm -rf dest'
         sh 'mkdir dest'
+        sh 'tree'
         
         unzip zipfFile:"../build/package.zip", dir:"dest"
         sh 'ls build'
