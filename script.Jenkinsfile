@@ -29,9 +29,9 @@ node {
     stage('Deploy') {
         echo 'Deploying....'
 
-        sh 'ls'
+        sh 'ls build'
         unstash "myartifacts"
-        sh 'ls'
+        sh 'ls build'
 
         sh '''
             cat build/readme
