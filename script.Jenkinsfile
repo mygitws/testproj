@@ -20,6 +20,8 @@ node {
         }
         
         stash name: "myartifacts", includes: "build/**", useDefaultExcludes:true
+        
+        rm -rf build tmp
     }
 
         
@@ -31,7 +33,9 @@ node {
         echo 'Deploying....'
 
         sh 'ls'
+        deleteDir()
         unstash "myartifacts"
+        //sh 'rm -rf dest'
         sh 'mkdir dest'
         
         unzip zipfFile:"../build/package.zip", dir:"dest"
