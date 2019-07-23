@@ -23,6 +23,10 @@ node {
         //  zip zipFile:"package.zip", archive:true, glob:"tmp/**"
         
         // create zip file containing notes and readme
+        zip zipFile:"testpackage.zip", archive:true, glob:"*", dir:"tmp"
+        sh 'unzip -l testpackage.zip'
+        
+        // create zip file containing notes and readme
         dir ("tmp") {
             zip zipFile:"package.zip", archive:true, glob:"notes, readme"
         }
