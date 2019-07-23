@@ -38,6 +38,7 @@ node {
         sh 'mkdir dest'
         sh 'tree'
         
+        sh 'cp build/package.zip .'
         unzip zipfFile:"build/package.zip", dir:"dest"
         sh 'ls build'
         sh 'ls dest'
