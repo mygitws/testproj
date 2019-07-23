@@ -21,7 +21,7 @@ node {
         
         stash name: "myartifacts", includes: "build/**", useDefaultExcludes:true
         
-        rm -rf build tmp
+        sh 'rm -rf build tmp'
     }
 
         
