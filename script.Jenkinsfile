@@ -20,6 +20,7 @@ node {
         '''
 
         zip zipFile:"package.zip", archive:true, dir:"..", glob:"tmp/*"
+        sh 'unzip -l package.zip'
         sh 'mv package.zip build/zip'
         sh 'mv tmp/readme build'
         
