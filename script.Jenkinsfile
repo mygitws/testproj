@@ -11,20 +11,8 @@ node {
         rm -rf build
         mkdir build
         cp readme notes build
-        
-        
-    /*
-        dir ("build")
-        {
-            zip zipFile:"package.zip"
-        }
-        
-   */
         '''
         
-        sh 'cp package.zip build'
-
-        //stash name: "myartifacts", includes: "build/**/*.zip", useDefaultExcludes:true
         stash name: "myartifacts", includes: "build/**/*", useDefaultExcludes:true
     }
 
@@ -49,7 +37,7 @@ node {
         sh 'chmod +x sayHello'
         sh './sayHello "Git"'
 
-       //cleanWs notFailBuild: true
+       cleanWs notFailBuild: true
     }
 
     
