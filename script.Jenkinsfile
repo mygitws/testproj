@@ -16,10 +16,10 @@ node {
         
         dir ("build")
         {
-            zip zipFile:"package.zip", archive:true, glob:"tmp/*"
+            zip zipFile:"package.zip", archive:true, dir:"..", glob:"tmp/*"
         }
         
-        stash name: "myartifacts", includes: "build/**", useDefaultExcludes:truel
+        stash name: "myartifacts", includes: "build/**", useDefaultExcludes:true
     }
 
         
