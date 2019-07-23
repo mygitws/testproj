@@ -13,6 +13,11 @@ node {
         cp readme notes build
         '''
         
+        dir ("build")
+        {
+            zip zipFile:"package.zip"
+        }
+        
         stash name: "myartifacts", includes: "build/**/*", useDefaultExcludes:true
     }
 
@@ -25,11 +30,10 @@ node {
         echo 'Deploying....'
 
         sh 'ls'
-
         unstash "myartifacts"
+        sh 'ls'
 
         sh '''
-            ls
             cat build/readme
             cat build/notes
         '''
