@@ -16,7 +16,7 @@ node {
         
         dir ("build")
         {
-            zip zipFile:"package.zip" archive:true glob:"tmp/*"
+            zip zipFile:"package.zip", archive:true, glob:"tmp/*"
         }
         
         stash name: "myartifacts", includes: "build/**", useDefaultExcludes:truel
@@ -33,7 +33,7 @@ node {
         sh 'ls build'
         unstash "myartifacts"
         mkdir dest
-        unzip zipfFile:"build/package.zip" dir:"dest"
+        unzip zipfFile:"build/package.zip", dir:"dest"
         sh 'ls build'
         sh 'ls dest'
 
