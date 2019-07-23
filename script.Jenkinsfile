@@ -27,9 +27,12 @@ node {
             zip zipFile:"package.zip", archive:true, glob:"notes, readme"
         }
         
-        sh 'unzip -l package.zip'
-        sh 'mv package.zip build/zip'
-        sh 'mv tmp/readme build'
+        sh '''
+        cd tmp
+        unzip -l package.zip
+        mv tmp/package.zip build/zip
+        mv tmp/readme build
+        '''
         
         dir("tmp") {
             stash name: "mynotes-stash", includes: "notes"
