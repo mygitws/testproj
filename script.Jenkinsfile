@@ -30,7 +30,7 @@ node {
     stage('Deploy') {
         echo 'Deploying....'
 
-        sh 'ls build'
+        sh 'ls'
         unstash "myartifacts"
         mkdir dest
         unzip zipfFile:"build/package.zip", dir:"dest"
@@ -45,7 +45,7 @@ node {
         sh 'chmod +x sayHello'
         sh './sayHello "Git"'
 
-       cleanWs notFailBuild: true
+        cleanWs disableDeferredWipeout: true, deleteDirs: true
     }
 
     
