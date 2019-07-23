@@ -19,7 +19,14 @@ node {
         cp readme notes tmp
         '''
 
-        zip zipFile:"package.zip", archive:true, glob:"tmp/**"
+        // create zip file containing tmp/notes and tmp/readme
+        //  zip zipFile:"package.zip", archive:true, glob:"tmp/**"
+        
+        // create zip file containing notes and readme
+        dir ("tmp") {
+            zip zipFile:"package.zip", archive:true, glob:"notes, readme"
+        }
+        
         sh 'unzip -l package.zip'
         sh 'mv package.zip build/zip'
         sh 'mv tmp/readme build'
