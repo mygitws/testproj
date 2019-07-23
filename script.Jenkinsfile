@@ -14,7 +14,7 @@ node {
         sh '''
         tree
         rm -rf build tmp
-        mkdir build/zip
+        mkdir -p build/zip
         mkdir tmp
         cp readme notes tmp
         '''
