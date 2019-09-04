@@ -6,6 +6,8 @@ node {
         echo 'Greeting..'
         sh 'chmod +x sayHello'
         sh './sayHello "Git"'
+        retMsg = sh (script: './sayHello', returnStdout: true).trim()
+        echo retMsg
     }
     
     stage('Build') {
