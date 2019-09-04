@@ -6,7 +6,7 @@ node {
         echo 'Greeting..'
         sh 'chmod +x sayHello'
         sh './sayHello "Git"'
-        retMsg = sh (script: './sayHello1 man', returnStdout: true).trim()
+        retMsg = sh (script: './sayHello man', returnStdout: true).trim()
         echo retMsg
     }
     
